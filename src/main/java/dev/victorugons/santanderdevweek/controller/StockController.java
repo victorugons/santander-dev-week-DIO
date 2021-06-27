@@ -32,16 +32,7 @@ public class StockController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<StockDTO>> findAll(){
-        List<StockDTO> list = new ArrayList<>();
-        StockDTO stockDTO = new StockDTO();
-        stockDTO.setId(1L);
-        stockDTO.setName("Alfa Test");
-        stockDTO.setPrice(100D);
-        stockDTO.setDate(LocalDate.now());
-        stockDTO.setVariation(10D);
-        list.add(stockDTO);
-
-        return ResponseEntity.ok(list);
+        return ResponseEntity.ok(stockService.findAll());
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

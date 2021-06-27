@@ -4,6 +4,9 @@ import dev.victorugons.santanderdevweek.model.Stock;
 import dev.victorugons.santanderdevweek.model.dto.StockDTO;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class StockMapper {
 
@@ -27,5 +30,9 @@ public class StockMapper {
         stockDTO.setVariation(stock.getVariation());
         stockDTO.setDate(stock.getDate());
         return stockDTO;
+    }
+
+    public List<StockDTO> toDTO(List<Stock> list) {
+        return list.stream().map(this::toDTO).collect(Collectors.toList());
     }
 }
