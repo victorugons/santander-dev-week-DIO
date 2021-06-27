@@ -9,6 +9,9 @@ public class StockMapper {
 
     public Stock toEntity(StockDTO stockDTO) {
         Stock stock = new Stock();
+        if(stockDTO.getId() != null) {
+            stock.setId(stockDTO.getId());
+        }
         stock.setName(stockDTO.getName());
         stock.setPrice(stockDTO.getPrice());
         stock.setVariation(stockDTO.getVariation());
