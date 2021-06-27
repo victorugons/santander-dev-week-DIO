@@ -7,10 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.Media;
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -37,13 +34,6 @@ public class StockController {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StockDTO> findById(@PathVariable Long id) {
-        StockDTO stockDTO = new StockDTO();
-        stockDTO.setId(1L);
-        stockDTO.setName("Alfa Test");
-        stockDTO.setPrice(100D);
-        stockDTO.setDate(LocalDate.now());
-        stockDTO.setVariation(10D);
-
-        return ResponseEntity.ok(stockDTO);
+        return ResponseEntity.ok(stockService.findById(id));
     }
 }

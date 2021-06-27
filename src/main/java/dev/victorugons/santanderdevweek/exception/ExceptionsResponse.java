@@ -1,7 +1,6 @@
 package dev.victorugons.santanderdevweek.exception;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class ExceptionsResponse {

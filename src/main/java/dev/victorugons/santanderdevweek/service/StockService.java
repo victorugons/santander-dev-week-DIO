@@ -1,6 +1,7 @@
 package dev.victorugons.santanderdevweek.service;
 
 import dev.victorugons.santanderdevweek.exception.BusinessException;
+import dev.victorugons.santanderdevweek.exception.NotFoundException;
 import dev.victorugons.santanderdevweek.mapper.StockMapper;
 import dev.victorugons.santanderdevweek.model.Stock;
 import dev.victorugons.santanderdevweek.model.dto.StockDTO;
@@ -48,5 +49,10 @@ public class StockService {
     public List<StockDTO> findAll() {
         List<Stock> list = repository.findAll();
         return mapper.toDTO(list);
+    }
+
+    @Transactional(readOnly = true)
+    public StockDTO findById(Long id) {
+        return repository.findById(id).map(mapper::toDTO).orElseThrow(NotFoundException::new);
     }
 }
