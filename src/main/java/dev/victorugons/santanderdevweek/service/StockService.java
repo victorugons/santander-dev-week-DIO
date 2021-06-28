@@ -45,6 +45,13 @@ public class StockService {
         return mapper.toDTO(stock);
     }
 
+    @Transactional
+    public StockDTO delete(Long id) {
+        StockDTO stockDTO = this.findById(id);
+        repository.deleteById(stockDTO.getId());
+        return stockDTO;
+    }
+
     @Transactional(readOnly = true)
     public List<StockDTO> findAll() {
         List<Stock> list = repository.findAll();
